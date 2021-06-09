@@ -39,3 +39,11 @@ export function every(arr, callback) {
   }
   return true;
 }
+
+export function forEach(arr, callback) {
+  let iteratedArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i])
+      iteratedArr[i] = callback(arr[i], i);
+  }
+}

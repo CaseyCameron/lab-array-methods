@@ -3,8 +3,11 @@ import {
   filter,
   findIndex,
   reduce,
-  every
+  every,
+  forEach
 } from './array-methods';
+
+import { jest } from '@jest/globals';
 
 describe('We are creating our own array methods', () => {
   it('We recreate a map method and multiply array eles by 2', () => {
@@ -32,7 +35,7 @@ describe('We are creating our own array methods', () => {
     expect(result).toEqual(21);
   });
 
-  it.only('We return true if all values are true, false if one value is false', () => {
+  it('We return true if all values are true, false if one value is false', () => {
     const arrTrue = [4, , 6, 7];
     const arrFalse = [0, 5, 1];
     const trueResult = every(arrTrue, (index) => { return index > 3; });
@@ -41,5 +44,30 @@ describe('We are creating our own array methods', () => {
     expect(falseResults).toEqual(false);
   });
 
+  it.only('We return undefined with our forEach', () => {
+    const arr = [2, 3, , 4];
+    const callback = jest.fn((item) => { return item * 2 });
+    const result = forEach(arr, callback);
+
+    //result returns undefined as outlined in rubric
+    console.log(result);
+
+    //use this to ensure mock fn was call exact num of times
+    expect(callback).toHaveBeenCalledTimes(3);
+
+    //ensures the mock fn was called with specific arguments
+    //javascript apparently only compares array ids?
+    //also, to HaveBeenCalledWith only works for one call at a time...
+    expect(callback).toHaveBeenCalledWith(2, expect.any(Number));
+    expect(callback).toHaveBeenCalledWith(3, expect.any(Number));
+    expect(callback).toHaveBeenCalledWith(4, expect.any(Number));
+
+    //Referencing the mock function jest docs explicitly...
+    expect(callback.mock.calls[0][0]).toBe(2);
+    expect(callback.mock.results[0].value).toBe(4);
+
+    expect(callback.mock.calls[1][0]).toBe(3);
+    expect(callback.mock.results[1].value).toBe(6);
+  })
 
 });
