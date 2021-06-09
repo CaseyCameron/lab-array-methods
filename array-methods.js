@@ -7,11 +7,10 @@ export function map(arr, callback) {
 };
 
 export function filter(arr, callback) {
-  const filteredArr = [];
+  let filteredArr = [];
   for (let i = 0; i < arr.length; i++) {
-    //if (!arr[i].startsWith('a'))
-    filteredArr[i] = callback(arr[i], i);
+    if (callback(arr[i])) filteredArr = [...filteredArr, arr[i]];
   }
   return filteredArr;
-};
+}
 

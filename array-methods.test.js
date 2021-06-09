@@ -11,12 +11,10 @@ describe('We are creating our own array methods', () => {
     expect(result.length).toEqual(arr.length);
   });
 
-  it.skip('We recreate a filter method that removes words starting with A', () => {
-    const arr = ['lassie', 'amanda', 'donny', 'armando'];
-    const result = filter(arr, (arr) => {
-      if (!item.startsWith('a')) return arr
-    });
-    expect(result).toEqual(['lassie', 'donny']);
+  it.only('We recreate a filter method returns only true values', () => {
+    const arr = [1, 2, 3, 4, 5, 6, 7];
+    const result = filter(arr, (index) => { return (index > 5 ? index : 0); });
+    expect(result).toEqual([6, 7]);
   });
 
 });
