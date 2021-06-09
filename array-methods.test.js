@@ -1,6 +1,7 @@
 import {
   map,
-  filter
+  filter,
+  findIndex
 } from './array-methods';
 
 describe('We are creating our own array methods', () => {
@@ -11,10 +12,17 @@ describe('We are creating our own array methods', () => {
     expect(result.length).toEqual(arr.length);
   });
 
-  it.only('We recreate a filter method returns only true values', () => {
-    const arr = [1, 2, 3, 4, 5, 6, 7];
+  it('We recreate a filter method returns only true values', () => {
+    const arr = [1, 2, , 4, 5, 6, 7];
     const result = filter(arr, (index) => { return (index > 5 ? index : 0); });
     expect(result).toEqual([6, 7]);
   });
+
+  it('We return an index if the element is true', () => {
+    const arr = [1, 2, , 4, 5, 6, 7];
+    const result = findIndex(arr, (index) => { return (index > 4) });
+    expect(result).toEqual(4);
+  });
+
 
 });
