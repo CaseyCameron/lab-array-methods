@@ -1,7 +1,9 @@
 import {
   map,
   filter,
-  findIndex
+  findIndex,
+  reduce,
+  every
 } from './array-methods';
 
 describe('We are creating our own array methods', () => {
@@ -22,6 +24,22 @@ describe('We are creating our own array methods', () => {
     const arr = [1, 2, , 4, 5, 6, 7];
     const result = findIndex(arr, (index) => { return (index > 4) });
     expect(result).toEqual(4);
+  });
+
+  it('We return the reduced value', () => {
+    const arr = [1, 2, , 4, 5, 6, 7];
+    const initialValue = 0;
+    const result = reduce(arr, (acc, item, initialValue) => { return acc });
+    expect(result).toEqual(25);
+  });
+
+  it.only('We return the reduced value', () => {
+    const arrTrue = [4, 5, 6, 7];
+    const arrFalse = [0, 2, 1];
+    const trueResult = every(arrTrue, (index) => { return index > 3; });
+    const falseResults = every(arrFalse, (index) => { return index > 3; });
+    expect(trueResult).toEqual(true);
+    expect(falseResults).toEqual(false);
   });
 
 

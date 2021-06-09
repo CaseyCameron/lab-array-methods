@@ -21,3 +21,18 @@ export function findIndex(arr, callback) {
   }
   return -1;
 }
+
+export function reduce(arr, callback, initialValue) {
+  console.log(arr);
+  console.log(initialValue);
+  for (let i = 0; i < arr.length; i++) {
+
+  }
+}
+
+export function every(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    if (!callback(arr[i])) return false;
+  }
+  return true;
+}
