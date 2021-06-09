@@ -23,11 +23,13 @@ export function findIndex(arr, callback) {
 }
 
 export function reduce(arr, callback, initialValue) {
-  console.log(arr);
-  console.log(initialValue);
-  for (let i = 0; i < arr.length; i++) {
+  let acc = initialValue === undefined ? 0 : initialValue;
 
+  for (let i = 0; i < arr.length; i++) {
+    acc = callback(acc, arr[i], i);
+    console.log(acc);
   }
+  return acc;
 }
 
 export function every(arr, callback) {
