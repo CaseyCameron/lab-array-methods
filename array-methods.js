@@ -26,8 +26,8 @@ export function reduce(arr, callback, initialValue) {
   let acc = initialValue === undefined ? 0 : initialValue;
 
   for (let i = 0; i < arr.length; i++) {
-    acc = callback(acc, arr[i], i);
-    console.log(acc);
+    if (arr[i])
+      acc = callback(acc, arr[i], i);
   }
   return acc;
 }

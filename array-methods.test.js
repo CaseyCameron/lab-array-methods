@@ -27,9 +27,9 @@ describe('We are creating our own array methods', () => {
   });
 
   it.only('We return the reduced value', () => {
-    const arr = [1, 2, 4, 5, 6, 7];
+    const arr = [1, 2, , 5, 6, 7];
     const result = reduce(arr, (acc, item) => { return acc + item; }, 0);
-    expect(result).toEqual(25);
+    expect(result).toEqual(21);
   });
 
   it('We return true if all values are true, false if one value is false', () => {
